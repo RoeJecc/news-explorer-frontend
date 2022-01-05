@@ -1,0 +1,33 @@
+.navigation{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    display: flex;
+}
+
+.navigation__home{
+    margin: 30px 42px 0 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    border-bottom: 3px solid #FFFFFF;
+    color: #FFFFFF;
+    text-decoration: none;
+    height: 50px;
+    width: 67px;
+}
+
+.navigation__signin{
+    background: none;
+    height: 48px;
+    width: 176px;
+    margin: 19px 104px 13px 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    background-image: url(../../images/Rectangle.svg);
+    background-size: contain;
+    color: #FFFFFF;
+    cursor: pointer;
+    border: none;
+}
