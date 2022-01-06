@@ -4,7 +4,7 @@ import Navigation from "./Navigation";
 function Header() {
     return(
         <div className="header">
-            <h1 className="header__title">NewsExplorer</h1>
+            <h2 className="header__title">NewsExplorer</h2>
             <Navigation />
         </div>
     );
