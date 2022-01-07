@@ -1,6 +1,17 @@
 @import url(./fonts/normalize.css);
 @import url(./fonts/fonts.css);
-@import url(./blocks/App/App.css);
-@import url(./blocks/Header/Header.css);
-@import url(./blocks/Navigation/Navigation.css);
-@import url(./blocks/Search/Search.css);
+@import url(./components/App/App.css);
+@import url(./components/Header/Header.css);
+@import url(./components/Navigation/Navigation.css);
+@import url(./components/Search/Search.css);
+@import url(./components/NewsCardList/NewsCardList.css);
+@import url(./components/NewsCard/NewsCard.css);
+@import url(./components/About/About.css);
+@import url(./components/Preloader/Preloader.css);
+@import url(./components/NoResults/NoResults.css);
+@import url(./components/SavedNewsHeader/SavedNewsHeader.css);
+@import url(./components/SavedNews/SavedNews.css);
+
+html, body {
+    height: 100%;
+}

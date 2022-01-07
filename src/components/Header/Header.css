@@ -10,6 +10,7 @@
   padding: 0 104px;
   max-width: 1440px;
   margin: 0 auto;
+  height: 80px;
 }
 
 .header__title{
@@ -19,6 +20,7 @@
     line-height: 24px;
     color: #FFFFFF;
     align-self: center;
+    margin: 0;
 }
 
 .header:hover{

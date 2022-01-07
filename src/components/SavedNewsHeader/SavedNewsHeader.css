@@ -1,0 +1,38 @@
+.saved-header{
+    border-top: 1px solid lightgray;
+    text-align: start;
+    background-color: white;
+}
+
+.saved-header__container{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 40px 106px 56px 106px;
+}
+
+.saved-header__title{
+    margin: 0;
+    color: #1A1B2280;
+    line-height: 24px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.saved-header__articles{
+    max-width: 530px;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 46px;
+    margin: 28px 0 30px;
+}
+
+.saved-header__keywords{
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0;
+}
+
+.saved-header__keywords_bold{
+    font-weight: 700;
+}

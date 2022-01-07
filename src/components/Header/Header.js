@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import Navigation from "./Navigation";
+import Navigation from "../Navigation/Navigation";
 
 function Header() {
     return(
-        <div className="header">
+        <header className="header">
             <h2 className="header__title">NewsExplorer</h2>
             <Navigation />
-        </div>
+        </header>
     );
 }
 
