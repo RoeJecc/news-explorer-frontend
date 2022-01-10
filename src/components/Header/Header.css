@@ -23,7 +23,6 @@
     margin: 0;
 }
 
-.header:hover{
-    background: rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid #1A1B22;
+.header__title_black{
+  color: black;
 }

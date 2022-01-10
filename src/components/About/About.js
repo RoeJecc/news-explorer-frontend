@@ -7,7 +7,7 @@ function About() {
       <div className="about__info">
         <h2 className="about__title">About the author</h2>
         <p className="about__paragraph">
-          This block descripes Joe. Here I will indicate my name, that I am an
+          This block describes Joe. Here I will indicate my name, that I am an
           aspiring web developer, and which development techniques I know.
         </p>
         <p className="about__paragraph">

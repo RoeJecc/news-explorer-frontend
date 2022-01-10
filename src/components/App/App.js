@@ -6,18 +6,40 @@ import Preloader from "../Preloader/Preloader";
 import NoResults from "../NoResults/NoResults";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import SavedNews from "../SavedNews/SavedNews";
+import Footer from "../Footer/Footer";
+import { Switch, Route, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [onSavedNews, setOnSavedNews] = useState(false);
+  const location = useLocation().pathname.substring(1);
+
+  useEffect(() => {
+    const savedNewsPath = ["saved-news"];
+    if (savedNewsPath.includes(location)) {
+      setOnSavedNews(true);
+    } else {
+      setOnSavedNews(false);
+    }
+  }, [location]);
+
   return (
     <div className="App">
-      <Header />
-      <Search />
-      <Preloader />
-      <NoResults />
-      <NewsCardList />
-      <About />
-      <SavedNewsHeader />
-      <SavedNews />
+      <Header onSavedNews={onSavedNews} />
+      <Switch>
+        <Route exact path="/">
+          <Search />
+          <NewsCardList />
+          <Preloader />
+          <NoResults />
+          <About />
+        </Route>
+        <Route path="/saved-news">
+          <SavedNewsHeader />
+          <SavedNews />
+        </Route>
+      </Switch>
+      <Footer />
     </div>
   );
 }
