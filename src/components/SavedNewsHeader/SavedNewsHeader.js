@@ -1,4 +1,10 @@
-function SavedNewsHeader() {
+import { useState, useEffect } from "react";
+
+function SavedNewsHeader({
+  onSavedNews,
+  setNewsCardListShown,
+  setSearchKeyword,
+}) {
   return (
     <section className="saved-header">
       <div className="saved-header__container">

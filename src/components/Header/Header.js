@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 
-function Header({ onSavedNews }) {
+function Header({ onSavedNews, setNewsCardListShown }) {
   return (
     <header className="header">
       <h2

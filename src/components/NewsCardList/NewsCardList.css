@@ -3,6 +3,11 @@
     padding: 80px 104px;
 }
 
+.news-card-list__saved-articles{
+  padding: 62px 104px;
+  background-color: white;
+}
+
 .news-card-list-container{
     max-width: 1232px;
     margin: auto;
