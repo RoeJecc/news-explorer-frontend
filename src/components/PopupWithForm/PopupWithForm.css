@@ -27,6 +27,8 @@
   border-radius: 10px;
   z-index: 1;
   align-self: center;
+  padding: 0 36px;
+  max-width: 430px;
 }
 
 @media screen and (max-width: 550px) {

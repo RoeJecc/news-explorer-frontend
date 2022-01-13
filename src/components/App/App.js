@@ -7,9 +7,11 @@ import NoResults from "../NoResults/NoResults";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import Footer from "../Footer/Footer";
 import SignIn from "../SignIn/SignIn";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { Switch, Route, useLocation, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import newsAPI from "../../utils/newsAPI";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function App() {
   const history = useHistory();
@@ -23,6 +25,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [signInOpen, setSignInOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
     const savedNewsPath = ["saved-news"];
@@ -60,13 +63,15 @@ function App() {
     setSignInOpen(true);
   }
 
-  function handleLogin() {
+  function handleLogin(email, password, username) {
     setLoggedIn(true);
+    setCurrentUser({ email, password, username });
+    console.log(currentUser);
     setSignInOpen(false);
   }
 
-  function handleLoginSubmit() {
-    handleLogin();
+  function handleLoginSubmit(email, password, username) {
+    handleLogin(email, password, username);
     history.push("/");
   }
 
@@ -80,58 +85,68 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Header
-        onSavedNews={onSavedNews}
-        setNewsCardListShown={setNewsCardListShown}
-        setSearchKeyword={setSearchKeyword}
-        loggedIn={loggedIn}
-        setLoggedIn={setLoggedIn}
-        onSignInClick={handleSignInClick}
-        onLotout={handleLogout}
-      />
-      <Switch>
-        <Route exact path="/">
-          <Search
-            setNewsCardListShown={setNewsCardListShown}
-            onSearch={handleSearchSubmit}
-            searchKeyword={searchKeyword}
-            setSearchKeyword={setSearchKeyword}
-          />
-          {hasResults && newsCardListShown && (
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="App">
+        <Header
+          onSavedNews={onSavedNews}
+          setNewsCardListShown={setNewsCardListShown}
+          setSearchKeyword={setSearchKeyword}
+          loggedIn={loggedIn}
+          setLoggedIn={setLoggedIn}
+          onSignInClick={handleSignInClick}
+          onLotout={handleLogout}
+          currentUser={currentUser}
+        />
+        <Switch>
+          <Route exact path="/">
+            <Search
+              setNewsCardListShown={setNewsCardListShown}
+              onSearch={handleSearchSubmit}
+              searchKeyword={searchKeyword}
+              setSearchKeyword={setSearchKeyword}
+            />
+            {hasResults && newsCardListShown && (
+              <NewsCardList
+                onSavedNews={onSavedNews}
+                cards={cards}
+                shownCards={shownCards}
+                setShownCards={setShownCards}
+                onSignInClick={handleSignInClick}
+                loggedIn={loggedIn}
+              />
+            )}
+            {isLoading && <Preloader />}
+            {!hasResults && newsCardListShown && <NoResults />}
+            <About />
+          </Route>
+          <ProtectedRoute path="/saved-news" loggedIn={loggedIn}>
+            <SavedNewsHeader
+              onSavedNews={onSavedNews}
+              setNewsCardListShown={setNewsCardListShown}
+              setSearchKeyword={setSearchKeyword}
+              currentUser={currentUser}
+              loggedIn={loggedIn}
+            />
             <NewsCardList
               onSavedNews={onSavedNews}
-              cards={cards}
               shownCards={shownCards}
               setShownCards={setShownCards}
-              onSignInClick={handleSignInClick}
+              loggedIn={loggedIn}
+              currentUser={currentUser}
             />
-          )}
-          {isLoading && <Preloader />}
-          {!hasResults && newsCardListShown && <NoResults />}
-          <About />
-        </Route>
-        <Route path="/saved-news">
-          <SavedNewsHeader
-            onSavedNews={onSavedNews}
-            setNewsCardListShown={setNewsCardListShown}
-            setSearchKeyword={setSearchKeyword}
-          />
-          <NewsCardList
-            onSavedNews={onSavedNews}
-            shownCards={shownCards}
-            setShownCards={setShownCards}
-          />
-        </Route>
-      </Switch>
-      <SignIn
-        isOpen={signInOpen}
-        onClose={closeAllPopups}
-        onSignInClick={handleSignInClick}
-        onLoginSubmit={handleLoginSubmit}
-      />
-      <Footer />
-    </div>
+          </ProtectedRoute>
+        </Switch>
+        <SignIn
+          isOpen={signInOpen}
+          onClose={closeAllPopups}
+          onSignInClick={handleSignInClick}
+          onLoginSubmit={handleLoginSubmit}
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+        />
+        <Footer />
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 

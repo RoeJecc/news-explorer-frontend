@@ -1,5 +1,5 @@
-import { Link, useHistory } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
+
 
 function Header({
   onSavedNews,
@@ -7,6 +7,7 @@ function Header({
   loggedIn,
   onSignInClick,
   setLoggedIn,
+  currentUser
 }) {
   return (
     <header className="header">
@@ -23,6 +24,7 @@ function Header({
         loggedIn={loggedIn}
         setLoggedIn={setLoggedIn}
         onSignInClick={onSignInClick}
+        currentUser={currentUser}
       />
     </header>
   );

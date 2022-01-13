@@ -10,13 +10,14 @@ function PopupWithForm({
   return (
     <div
       className={`modal modal_type_${name} ${isOpen ? "modal_open" : ""}`}
-      onClick={onClose}
+      
     >
       <div className="modal__container">
         <form
           name={`${name}`}
           onSubmit={onSubmit}
           className={`modal__profile modal__${name}`}
+          noValidate
         >
           <h3 className="modal__title">{title}</h3>
           {children}

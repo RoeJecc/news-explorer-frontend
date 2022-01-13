@@ -1,6 +1,14 @@
 import { NavLink, useHistory } from "react-router-dom";
+import logout from "../../images/logout.png";
+import logoutwhite from "../../images/logoutwhite.png";
 
-function Navigation({ onSavedNews, loggedIn, onSignInClick, setLoggedIn }) {
+function Navigation({
+  onSavedNews,
+  loggedIn,
+  onSignInClick,
+  setLoggedIn,
+  currentUser,
+}) {
   const history = useHistory();
 
   function handleLoginButton() {
@@ -61,7 +69,11 @@ function Navigation({ onSavedNews, loggedIn, onSignInClick, setLoggedIn }) {
           (onSavedNews ? "navigation__signin_black" : "")
         }
       >
-        Log Out
+        {currentUser.username}
+        <img
+          className="navigation__logout_button"
+          src={(onSavedNews ? logout : logoutwhite)}
+        />
       </button>
     </nav>
   );

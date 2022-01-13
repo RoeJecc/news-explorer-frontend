@@ -42,21 +42,30 @@
 .navigation__signin {
   background: none;
   height: 48px;
-  width: 176px;
+  min-width: 176px;
   margin: 19px 104px 13px 0;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  background-image: url(../../images/Rectangle.svg);
-  background-size: contain;
   color: #ffffff;
   cursor: pointer;
-  border: none;
+  border-radius: 100px;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
 }
 
 .navigation__signin_black {
   color: black;
-  background-image: url(../../images/RectangleGrey.png);
+  border: 1px solid black;
   background-position: center;
   background-repeat: no-repeat;
+  min-width: 112px;
+}
+
+.navigation__logout_button{
+  height: 16px;
+  margin-left: 15px;
 }

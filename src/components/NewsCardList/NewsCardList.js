@@ -8,6 +8,9 @@ function NewsCardList({
   shownCards,
   setShownCards,
   setNewsCardListShown,
+  loggedIn,
+  setLoggedIn,
+  onSignInClick
 }) {
   const [buttonShown, setButtonShown] = useState(false);
   const [next, setNext] = useState(3);
@@ -37,7 +40,7 @@ function NewsCardList({
         <ul className="news-card-list__grid">
         {shownCards?.map((newscard, index) => (
             <li className="news-card-list__card" key={index}>
-              <NewsCard data={newscard} onSavedNews={onSavedNews} />
+              <NewsCard data={newscard} onSavedNews={onSavedNews}  />
             </li>
           ))}
         </ul>
@@ -50,7 +53,8 @@ function NewsCardList({
         <ul className="news-card-list__grid">
           {shownCards?.map((newscard, index) => (
             <li className="news-card-list__card" key={index}>
-              <NewsCard data={newscard} onSavedNews={onSavedNews} />
+              <NewsCard loggedIn={loggedIn}
+              setLoggedIn={setLoggedIn} data={newscard} onSavedNews={onSavedNews} onSignInClick={onSignInClick} />
             </li>
           ))}
         </ul>

@@ -3,7 +3,7 @@
     border-radius: 10px;
     position: relative;
     background-color: white;
-    max-height: 576px;
+    min-height: 576px;
 }
 
 .news-card__image{
@@ -11,6 +11,7 @@
     object-fit: cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    min-height: 272px;
 }
 
 .news-card__link{
@@ -84,8 +85,24 @@
     background-image: url(../../images/savebuttonblack.png);
 }
 
-.news-card__tooltip{
+.news-card__button:hover + .news-card__tooltip {
     display: flex;
+}
+
+.news-card__button:hover + .news-card__tooltip_keyword {
+    display: flex;
+}
+
+.news-card__button_blue{
+    background-image: url(../../images/savebuttonblue.png);
+}
+
+.news-card__button_blue:hover{
+    background-image: url(../../images/savebuttonblue.png);
+}
+
+.news-card__tooltip{
+    display: none;
     flex-direction: column;
     justify-content: center;
     height: 40px;
@@ -101,4 +118,8 @@
     border-radius: 10px;
     padding-left: 22px;
     padding-right: 22px;
+}
+
+.news-card__tooltip_keyword{
+    right: 300px;
 }

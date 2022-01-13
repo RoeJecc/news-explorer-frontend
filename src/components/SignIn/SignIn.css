@@ -1,0 +1,22 @@
+.signin__container{
+    margin-bottom: 32px;
+    position: relative;
+}
+
+.signin__label{
+    display: block;
+    font-size: 12px;
+    line-height: 14px;
+    color: #2F71E5;
+}
+
+.signin__input{
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 14px;
+    line-height: 16.94px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0, .2);
+    padding: 10px 0;
+}
