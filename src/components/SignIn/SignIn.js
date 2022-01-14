@@ -41,6 +41,7 @@ function SignIn({
     <PopupWithForm
       name="signin"
       title="Sign in"
+      buttonText="Sign in"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
@@ -57,7 +58,7 @@ function SignIn({
           onChange={handleEmail}
           required
         ></input>
-        <label className="signin__label">Password</label>
+        <label className="signin__label signin__label_password">Password</label>
         <input
           type="password"
           className="signin__input"
@@ -66,17 +67,6 @@ function SignIn({
           name="password"
           value={password || ""}
           onChange={handlePassword}
-          required
-        ></input>
-        <label className="signin__label">Username</label>
-        <input
-          type="username"
-          className="signin__input"
-          id="username-login"
-          placeholder="Enter Username"
-          name="username"
-          value={username || ""}
-          onChange={handleUsername}
           required
         ></input>
       </div>

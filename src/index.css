@@ -14,6 +14,10 @@
 @import url(./components/PopupWithForm/PopupWithForm.css);
 @import url(./components/SignIn/SignIn.css);
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: 100%;

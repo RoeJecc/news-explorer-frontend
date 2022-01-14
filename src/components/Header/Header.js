@@ -1,5 +1,5 @@
 import Navigation from "../Navigation/Navigation";
-
+import { NavLink } from "react-router-dom";
 
 function Header({
   onSavedNews,
@@ -7,17 +7,18 @@ function Header({
   loggedIn,
   onSignInClick,
   setLoggedIn,
-  currentUser
+  currentUser,
 }) {
   return (
     <header className="header">
-      <h2
+      <NavLink
+        to="/"
         className={
           "header__title " + (onSavedNews ? "header__title_black" : "")
         }
       >
         NewsExplorer
-      </h2>
+      </NavLink>
       <Navigation
         onSavedNews={onSavedNews}
         setNewsCardListShown={setNewsCardListShown}

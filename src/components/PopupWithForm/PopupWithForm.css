@@ -10,6 +10,7 @@
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.5s, opacity 0.4s linear;
+  text-align: left;
 }
 
 .modal_open {
@@ -22,13 +23,13 @@
   background-color: white;
   display: flex;
   position: relative;
-  width: 430px;
   color: black;
   border-radius: 10px;
   z-index: 1;
   align-self: center;
   padding: 0 36px;
-  max-width: 430px;
+  min-width: calc(430px - 72px);
+  min-height: 380px;
 }
 
 @media screen and (max-width: 550px) {
@@ -46,12 +47,14 @@
 }
 
 .modal__title {
-  margin: 34px 0 20px 36px;
+  margin: 34px 0 12px 0;
   padding: 0;
-  font-size: 24px;
-  line-height: 29px;
+  font-family: "Roboto";
   font-weight: 900;
-  max-width: 330px;
+  font-size: 24px;
+  line-height: 28.13px;
+  font-weight: 900;
+  font-style: normal;
 }
 
 @media screen and (max-width: 550px) {
@@ -63,22 +66,28 @@
 }
 
 .modal__form-submit {
-  background-color: black;
+  align-self: center;
+  width: 360px;
+  height: 64px;
   border: none;
+  border-radius: 100px;
+  background-color: #2f71e5;
   color: white;
-  cursor: pointer;
-  margin: 18px 36px 36px;
-  width: calc(100% - 72px);
-  height: 50px;
+  font-family: "Roboto";
+  font-weight: 500;
   font-size: 18px;
-  line-height: 22px;
-  border-radius: 2px;
-  transition: opacity 0.4s linear;
+  line-height: 24px;
+  transition: background-color 0.4s ease;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .modal__form-submit:hover {
-  opacity: 0.8;
-  transition: opacity 0.4s linear;
+  background-color: #347eff;
+  cursor: pointer;
+}
+
+.modal__form-submit:active {
+  background-color: #2a65cc;
 }
 
 @media screen and (max-width: 550px) {
@@ -103,8 +112,8 @@
   background-repeat: no-repeat;
   background-color: rgb(0, 0, 0, 0);
   border: none;
-  height: 48px;
-  width: 48px;
+  height: 40px;
+  width: 40px;
   align-self: flex-end;
   justify-self: flex-end;
   position: absolute;
@@ -112,6 +121,20 @@
   top: -50px;
   cursor: pointer;
   transition: opacity 0.4s linear;
+}
+
+.modal__text{
+  text-align: center;
+  font-family: "Inter";
+  font-size: 14px;
+  line-height: 19.94px;
+  padding: 16px 0 28px;;
+  margin: 0;
+}
+
+.modal__signup-link{
+  text-decoration: none;
+  color: #2F71E5;
 }
 
 .modal__close-button:hover {

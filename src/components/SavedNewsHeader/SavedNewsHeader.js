@@ -11,7 +11,7 @@ function SavedNewsHeader({
       <div className="saved-header__container">
         <p className="saved-header__title">Saved articles</p>
         <h2 className="saved-header__articles">
-          {currentUser.username}, you have 0 saved articles.
+          {currentUser.email}, you have 0 saved articles.
         </h2>
         <p className="saved-header__keywords">
           By keywords:

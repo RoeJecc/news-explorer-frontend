@@ -12,14 +12,17 @@
 }
 
 .no-results__title{
+    font-family: "Roboto Slab";
     font-weight: 400;
     font-size: 26px;
     line-height: 30px;
     margin: 24px 0 16px;
+    color: #1A1B22;
 }
 
 .no-results__paragraph{
     color: #B6BCBF;
+    font-family: "Roboto";
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;

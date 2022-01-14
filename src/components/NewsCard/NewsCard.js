@@ -39,11 +39,11 @@ function NewsCard({ data, onSavedNews, loggedIn, onSignInClick }) {
       "December",
     ];
 
-    let articleDate = onSavedNews ? data.date : data.publishedAt; // original date in ISOstring format
-    let newDate = new Date(articleDate?.slice(0, 10)); // get date without time
+    let articleDate = onSavedNews ? data.date : data.publishedAt;
+    let newDate = new Date(articleDate?.slice(0, 10));
     let convertedDate = `${
       months[newDate.getMonth()]
-    } ${newDate.getDate()},  ${newDate.getFullYear()}`; // convert date to correct format
+    } ${newDate.getDate()},  ${newDate.getFullYear()}`;
 
     return convertedDate;
   }
@@ -54,9 +54,7 @@ function NewsCard({ data, onSavedNews, loggedIn, onSignInClick }) {
         type="button"
         onClick={() => handleSaveClick()}
       ></button>
-      {isSaved && loggedIn && (
-        <div className="news-card__tooltip">Remove from saved</div>
-      )}
+      {isSaved && loggedIn && <div className="news-card__tooltip">Remove from saved</div>}
       <img className="news-card__image" src={data.urlToImage} />
       <a className="news-card__link" href={data.link}>
         <div className="news-card__info">
@@ -73,6 +71,7 @@ function NewsCard({ data, onSavedNews, loggedIn, onSignInClick }) {
         className="news-card__button"
         onClick={handleLoginButton}
       ></button>
+      <div className="news-card__tooltip">Sign in to save articles</div>
       <div className="news-card__tooltip news-card__tooltip_keyword">
         {data.keyword}
       </div>

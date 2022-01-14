@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 function PopupWithForm({
   name,
   isOpen,
@@ -8,10 +10,7 @@ function PopupWithForm({
   onSubmit,
 }) {
   return (
-    <div
-      className={`modal modal_type_${name} ${isOpen ? "modal_open" : ""}`}
-      
-    >
+    <div className={`modal modal_type_${name} ${isOpen ? "modal_open" : ""}`}>
       <div className="modal__container">
         <form
           name={`${name}`}
@@ -30,6 +29,9 @@ function PopupWithForm({
             name="close"
             onClick={onClose}
           />
+          <p className="modal__text">
+            or <NavLink to="/" className="modal__signup-link">Sign up</NavLink>
+          </p>
         </form>
       </div>
     </div>

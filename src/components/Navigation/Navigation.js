@@ -69,7 +69,7 @@ function Navigation({
           (onSavedNews ? "navigation__signin_black" : "")
         }
       >
-        {currentUser.username}
+        {currentUser.email}
         <img
           className="navigation__logout_button"
           src={(onSavedNews ? logout : logoutwhite)}
