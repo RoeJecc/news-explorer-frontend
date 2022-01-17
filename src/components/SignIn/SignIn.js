@@ -1,5 +1,6 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import { useState } from "react";
+import FormValidator from "../../utils/formValidator";
 
 function SignIn({
   isOpen,
@@ -10,21 +11,10 @@ function SignIn({
   setCurrentUser,
   currentUser,
 }) {
+  const { values, handleChange, errors, isValid } = FormValidator();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-
-  function handleEmail(e) {
-    setEmail(e.target.value);
-  }
-
-  function handlePassword(e) {
-    setPassword(e.target.value);
-  }
-
-  function handleUsername(e) {
-    setUsername(e.target.value);
-  }
 
   function resetInfo() {
     setEmail("");
@@ -33,7 +23,7 @@ function SignIn({
 
   function handleSubmit(e) {
     e.preventDefault();
-    onLoginSubmit(email, password, username);
+    onLoginSubmit(values.email, values.password);
     resetInfo();
   }
 
@@ -41,7 +31,6 @@ function SignIn({
     <PopupWithForm
       name="signin"
       title="Sign in"
-      buttonText="Sign in"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
@@ -54,10 +43,12 @@ function SignIn({
           id="email-login"
           placeholder="Enter email"
           name="email"
-          value={email || ""}
-          onChange={handleEmail}
+          value={values.email || ""}
+          onChange={handleChange}
+          autoComplete="on"
           required
         ></input>
+        <p>{errors.email || ""}</p>
         <label className="signin__label signin__label_password">Password</label>
         <input
           type="password"
@@ -65,10 +56,23 @@ function SignIn({
           id="password-login"
           placeholder="Enter password"
           name="password"
-          value={password || ""}
-          onChange={handlePassword}
+          value={values.password || ""}
+          onChange={handleChange}
+          minLength={4}
+          maxLength={20}
+          autoComplete="on"
           required
         ></input>
+        <p>{errors.password || ""}</p>
+        <button
+          className={`modal__form-submit ${
+            isValid ? "modal__form-submit_active" : ""
+          }`}
+          type="submit"
+          disabled={!isValid}
+        >
+          Sign in
+        </button>
       </div>
     </PopupWithForm>
   );

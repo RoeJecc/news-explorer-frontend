@@ -26,6 +26,8 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [signInOpen, setSignInOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [savedArticles, setSavedArticles] = useState([]);
+  const [savedCardsArray, setSavedCardsArray] = useState([...savedArticles]);
 
   useEffect(() => {
     const savedNewsPath = ["saved-news"];
@@ -113,6 +115,7 @@ function App() {
                 setShownCards={setShownCards}
                 onSignInClick={handleSignInClick}
                 loggedIn={loggedIn}
+                setSavedCardsArray={setSavedCardsArray}
               />
             )}
             {isLoading && <Preloader />}
@@ -133,6 +136,10 @@ function App() {
               setShownCards={setShownCards}
               loggedIn={loggedIn}
               currentUser={currentUser}
+              setSavedArticles={setSavedArticles}
+              savedArticles={savedArticles}
+              setSavedCardsArray={setSavedCardsArray}
+              savedCardsArray={savedCardsArray}
             />
           </ProtectedRoute>
         </Switch>

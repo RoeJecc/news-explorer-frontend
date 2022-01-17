@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom";
+import FormValidator from "../../utils/formValidator";
+import { useEffect } from "react";
 
 function PopupWithForm({
   name,
@@ -9,6 +11,8 @@ function PopupWithForm({
   children,
   onSubmit,
 }) {
+  
+
   return (
     <div className={`modal modal_type_${name} ${isOpen ? "modal_open" : ""}`}>
       <div className="modal__container">
@@ -19,10 +23,7 @@ function PopupWithForm({
           noValidate
         >
           <h3 className="modal__title">{title}</h3>
-          {children}
-          <button className="modal__form-submit" type="submit">
-            {buttonText}
-          </button>
+          {children}      
           <button
             className="modal__close-button modal__close-button_profile"
             type="reset"
@@ -30,7 +31,10 @@ function PopupWithForm({
             onClick={onClose}
           />
           <p className="modal__text">
-            or <NavLink to="/" className="modal__signup-link">Sign up</NavLink>
+            or{" "}
+            <NavLink to="/" className="modal__signup-link">
+              Sign up
+            </NavLink>
           </p>
         </form>
       </div>

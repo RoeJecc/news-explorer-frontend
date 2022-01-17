@@ -100,12 +100,16 @@
   display: flex;
 }
 
-.news-card__button_blue {
+.news-card__button_saved {
   background-image: url(../../images/savebuttonblue.png);
 }
 
-.news-card__button_blue:hover {
+.news-card__button-saved:active{
   background-image: url(../../images/savebuttonblue.png);
+}
+
+.news-card__button_saved:hover {
+  background-image: url(../../images/trash.png);
 }
 
 .news-card__tooltip {
