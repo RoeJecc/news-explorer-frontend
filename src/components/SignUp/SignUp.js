@@ -1,47 +1,37 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-import { useState } from "react";
 import FormValidator from "../../utils/formValidator";
 
-function SignIn({
+
+function SignUp({
   isOpen,
   onClose,
-  onLoginSubmit,
+  onRegisterSubmit,
   onSignInClick,
   hasError,
   setCurrentUser,
   currentUser,
-  onSignUpClick
 }) {
   const { values, handleChange, errors, isValid } = FormValidator();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-
-  function resetInfo() {
-    setEmail("");
-    setPassword("");
-  }
 
   function handleSubmit(e) {
     e.preventDefault();
-    onLoginSubmit(values.email, values.password);
-    resetInfo();
+    onRegisterSubmit(values.email, values.password, values.name);
   }
 
   return (
     <PopupWithForm
-      name="signin"
-      title="Sign in"
+      name="signup"
+      title="Sign up"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <div className="signin__container">
-        <label className="signin__label">Email</label>
+      <div className="signup__container">
+        <label className="signup__label">Email</label>
         <input
           type="email"
-          className="signin__input"
-          id="email-login"
+          className="signup__input"
+          id="email-register"
           placeholder="Enter email"
           name="email"
           value={values.email || ""}
@@ -53,8 +43,8 @@ function SignIn({
         <label className="signin__label signin__label_password">Password</label>
         <input
           type="password"
-          className="signin__input"
-          id="password-login"
+          className="signup__input"
+          id="password-register"
           placeholder="Enter password"
           name="password"
           value={values.password || ""}
@@ -65,6 +55,19 @@ function SignIn({
           required
         ></input>
         <p className="modal__error">{errors.password || ""}</p>
+        <label className="signin__label signin__label_username">Username</label>
+        <input
+          type="name"
+          className="signup__input"
+          id="name-register"
+          placeholder="Enter username"
+          name="name"
+          value={values.name || ""}
+          onChange={handleChange}
+          autoComplete="on"
+          required
+        ></input>
+        <p className="modal__error">{errors.name || ""}</p>
         <button
           className={`modal__form-submit ${
             isValid ? "modal__form-submit_active" : ""
@@ -74,9 +77,9 @@ function SignIn({
         >
           Sign in
         </button>
-        <p className="signin__text">
+        <p className="signup__text">
           or{" "}
-          <span to="/" className="signin__signup-link" onClick={onSignUpClick} >
+          <span to="/" className="signup__signin-link" onClick={onSignInClick}>
             Sign up
           </span>
         </p>
@@ -85,4 +88,4 @@ function SignIn({
   );
 }
 
-export default SignIn;
+export default SignUp;

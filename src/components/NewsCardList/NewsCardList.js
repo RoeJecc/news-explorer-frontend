@@ -29,7 +29,6 @@ function NewsCardList({
     }
   }, [shownCards?.length, cards?.length]);
 
-
   function handleShowMore() {
     setShownCards(cards.slice(0, next + CARDS_NUMBER));
     setNext(next + CARDS_NUMBER);
@@ -39,6 +38,62 @@ function NewsCardList({
     <section className="news-card-list news-card-list__saved-articles">
       <div className="news-card-list__container">
         <ul className="news-card-list__grid">
+          <li className="news-card-list__card">
+            <NewsCard
+              loggedIn={loggedIn}
+              setLoggedIn={setLoggedIn}
+              data={{
+                title: "title",
+                source: "source",
+                description: "description",
+                date: "1/01/91",
+              }}
+              onSavedNews={onSavedNews}
+              onSignInClick={onSignInClick}
+            />
+          </li>
+          <li className="news-card-list__card">
+            <NewsCard
+              loggedIn={loggedIn}
+              setLoggedIn={setLoggedIn}
+              data={{
+                title: "title",
+                source: "source",
+                description: "description",
+                date: "1/01/91",
+              }}
+              onSavedNews={onSavedNews}
+              onSignInClick={onSignInClick}
+            />
+          </li>
+          <li className="news-card-list__card">
+            <NewsCard
+              loggedIn={loggedIn}
+              setLoggedIn={setLoggedIn}
+              data={{
+                title: "title",
+                source: "source",
+                description: "description",
+                date: "1/01/91",
+              }}
+              onSavedNews={onSavedNews}
+              onSignInClick={onSignInClick}
+            />
+          </li>
+          <li className="news-card-list__card">
+            <NewsCard
+              loggedIn={loggedIn}
+              setLoggedIn={setLoggedIn}
+              data={{
+                title: "title",
+                source: "source",
+                description: "description",
+                date: "1/01/91",
+              }}
+              onSavedNews={onSavedNews}
+              onSignInClick={onSignInClick}
+            />
+          </li>
         </ul>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+
 import FormValidator from "../../utils/formValidator";
 import { useEffect } from "react";
 
@@ -30,12 +30,6 @@ function PopupWithForm({
             name="close"
             onClick={onClose}
           />
-          <p className="modal__text">
-            or{" "}
-            <NavLink to="/" className="modal__signup-link">
-              Sign up
-            </NavLink>
-          </p>
         </form>
       </div>
     </div>

@@ -13,6 +13,8 @@
 @import url(./components/Footer/Footer.css);
 @import url(./components/PopupWithForm/PopupWithForm.css);
 @import url(./components/SignIn/SignIn.css);
+@import url(./components/SignUp/SignUp.css);
+@import url(./components/Success/Success.css);
 
 * {
   box-sizing: border-box;

@@ -1,11 +1,7 @@
 import { useState } from "react";
+import card from "../../images/dogcard.png";
 
-function NewsCard({
-  data,
-  onSavedNews,
-  loggedIn,
-  onSignInClick,
-}) {
+function NewsCard({ data, onSavedNews, loggedIn, onSignInClick }) {
   const [isSaved, setIsSaved] = useState(false);
 
   function handleLoginButton() {
@@ -46,13 +42,26 @@ function NewsCard({
   }
   return loggedIn ? (
     <div className="news-card">
-      <button
-        className={saveCardButtonClassName}
-        type="button"
-        onClick={() => handleSaveClick()}
-      ></button>
+      {onSavedNews ? (
+        <button
+          className="news-card__button_saved-news"
+          type="button"
+          onClick={() => handleSaveClick()}
+        ></button>
+      ) : (
+        <button
+          className={saveCardButtonClassName}
+          type="button"
+          onClick={() => handleSaveClick()}
+        ></button>
+      )}
+
       {isSaved && <div className="news-card__tooltip">Remove from saved</div>}
-      <img className="news-card__image" src={data.urlToImage} />
+      {!onSavedNews ? (
+        <img className="news-card__image" src={data.urlToImage} />
+      ) : (
+        <img className="news-card__image" src={card} />
+      )}
       <a className="news-card__link" href={data.link}>
         <div className="news-card__info">
           <p className="news-card__date">{convertDate()}</p>

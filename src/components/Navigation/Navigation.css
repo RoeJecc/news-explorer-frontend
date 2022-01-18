@@ -3,7 +3,7 @@
   margin: 0;
   height: 100%;
   display: flex;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
 }
 
 .navigation__home {

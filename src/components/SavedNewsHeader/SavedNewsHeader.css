@@ -13,7 +13,7 @@
 .saved-header__title{
     margin: 0;
     color: #1A1B2280;
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     line-height: 24px;
     font-weight: 400;
     font-size: 18px;
@@ -23,7 +23,7 @@
 .saved-header__articles{
     max-width: 530px;
     font-weight: 400;
-    font-family: "Roboto Slab";
+    font-family: "Roboto Slab", sans-serif;
     font-size: 40px;
     line-height: 46px;
     margin: 28px 0 30px;
@@ -31,7 +31,7 @@
 
 .saved-header__keywords{
     font-weight: 400;
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     font-size: 18px;
     line-height: 24px;
     margin: 0;

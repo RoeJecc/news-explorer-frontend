@@ -7,6 +7,8 @@ import NoResults from "../NoResults/NoResults";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import Footer from "../Footer/Footer";
 import SignIn from "../SignIn/SignIn";
+import SignUp from "../SignUp/SignUp";
+import Success from "../Success/Success";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { Switch, Route, useLocation, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -25,9 +27,10 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [signInOpen, setSignInOpen] = useState(false);
+  const [signUpOpen, setSignUpOpen] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [successOpen, setSuccessOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-  const [savedArticles, setSavedArticles] = useState([]);
-  const [savedCardsArray, setSavedCardsArray] = useState([...savedArticles]);
 
   useEffect(() => {
     const savedNewsPath = ["saved-news"];
@@ -63,11 +66,28 @@ function App() {
 
   function handleSignInClick() {
     setSignInOpen(true);
+    setSignUpOpen(false);
+    setSuccessOpen(false);
+  }
+
+  function handleSignUpClick() {
+    setSignUpOpen(true);
+    setSignInOpen(false);
+  }
+
+  function handleRegister(email, password, username) {
+    setSignUpOpen(false);
+    setSuccessOpen(true);
+  }
+
+  function handleRegisterSubmit(email, password, username) {
+    setIsRegistered(true);
+    handleRegister();
   }
 
   function handleLogin(email, password, username) {
     setLoggedIn(true);
-    setCurrentUser({ email, password, username });
+    setCurrentUser({ email, password});
     console.log(currentUser);
     setSignInOpen(false);
   }
@@ -84,6 +104,8 @@ function App() {
 
   function closeAllPopups() {
     setSignInOpen(false);
+    setSignUpOpen(false);
+    setSuccessOpen(false);
   }
 
   return (
@@ -115,7 +137,6 @@ function App() {
                 setShownCards={setShownCards}
                 onSignInClick={handleSignInClick}
                 loggedIn={loggedIn}
-                setSavedCardsArray={setSavedCardsArray}
               />
             )}
             {isLoading && <Preloader />}
@@ -136,10 +157,6 @@ function App() {
               setShownCards={setShownCards}
               loggedIn={loggedIn}
               currentUser={currentUser}
-              setSavedArticles={setSavedArticles}
-              savedArticles={savedArticles}
-              setSavedCardsArray={setSavedCardsArray}
-              savedCardsArray={savedCardsArray}
             />
           </ProtectedRoute>
         </Switch>
@@ -150,6 +167,20 @@ function App() {
           onLoginSubmit={handleLoginSubmit}
           currentUser={currentUser}
           setCurrentUser={setCurrentUser}
+          onSignUpClick={handleSignUpClick}
+        />
+        <SignUp
+          setCurrentUser={setCurrentUser}
+          isOpen={signUpOpen}
+          onClose={closeAllPopups}
+          onSignInClick={handleSignInClick}
+          onRegisterSubmit={handleRegisterSubmit}
+        />
+        <Success
+          isOpen={successOpen}
+          onClose={closeAllPopups}
+          onSignInClick={handleSignInClick}
+          isRegistered={isRegistered}
         />
         <Footer />
       </div>
