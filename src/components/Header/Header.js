@@ -8,14 +8,20 @@ function Header({
   onSignInClick,
   setLoggedIn,
   currentUser,
+  isNavOpen,
+  setIsNavOpen,
 }) {
   return (
-    <header className="header">
+    <header
+      className={`header ${
+        isNavOpen ? "header__mobile-open" : "header__mobile-closed"
+      }`}
+    >
       <NavLink
         to="/"
-        className={
-          "header__title " + (onSavedNews ? "header__title_black" : "")
-        }
+        className={`header__title ${onSavedNews && "header__title_black"} ${
+          isNavOpen && "header__title_mobile-open"
+        }`}
       >
         NewsExplorer
       </NavLink>
@@ -26,6 +32,8 @@ function Header({
         setLoggedIn={setLoggedIn}
         onSignInClick={onSignInClick}
         currentUser={currentUser}
+        isNavOpen={isNavOpen}
+        setIsNavOpen={setIsNavOpen}
       />
     </header>
   );

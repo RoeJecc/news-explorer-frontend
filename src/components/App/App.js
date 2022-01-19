@@ -31,6 +31,7 @@ function App() {
   const [isRegistered, setIsRegistered] = useState(false);
   const [successOpen, setSuccessOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   useEffect(() => {
     const savedNewsPath = ["saved-news"];
@@ -120,6 +121,8 @@ function App() {
           onSignInClick={handleSignInClick}
           onLotout={handleLogout}
           currentUser={currentUser}
+          isNavOpen={isNavOpen}
+          setIsNavOpen={setIsNavOpen}
         />
         <Switch>
           <Route exact path="/">

@@ -39,3 +39,21 @@
     line-height: 24px;
     text-align: start;
 }
+
+@media only screen and (max-width: 1100px) {
+    .about{
+        padding: 0 40px;
+    }
+
+    .about__image{
+        padding: 61px 0;
+        max-width: 232px;
+        min-height: 232px;
+    }
+
+    .about__info{
+        max-width: 424px;
+        margin-left: 32px;
+        padding-top: 40px;
+    }
+}
