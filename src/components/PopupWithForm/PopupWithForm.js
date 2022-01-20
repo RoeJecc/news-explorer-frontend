@@ -1,4 +1,3 @@
-
 import FormValidator from "../../utils/formValidator";
 import { useEffect } from "react";
 
@@ -11,11 +10,15 @@ function PopupWithForm({
   children,
   onSubmit,
 }) {
-  
-
   return (
     <div className={`modal modal_type_${name} ${isOpen ? "modal_open" : ""}`}>
       <div className="modal__container">
+      <button
+            className="modal__close-button modal__close-button_profile"
+            type="reset"
+            name="close"
+            onClick={onClose}
+          />
         <form
           name={`${name}`}
           onSubmit={onSubmit}
@@ -23,13 +26,8 @@ function PopupWithForm({
           noValidate
         >
           <h3 className="modal__title">{title}</h3>
-          {children}      
-          <button
-            className="modal__close-button modal__close-button_profile"
-            type="reset"
-            name="close"
-            onClick={onClose}
-          />
+          {children}
+          
         </form>
       </div>
     </div>

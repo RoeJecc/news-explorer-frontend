@@ -32,12 +32,6 @@
   min-height: 380px;
 }
 
-@media screen and (max-width: 550px) {
-  .modal__container {
-    width: 282px;
-  }
-}
-
 .modal__profile {
   margin: 0;
   padding: 0;
@@ -55,14 +49,6 @@
   line-height: 28.13px;
   font-weight: 900;
   font-style: normal;
-}
-
-@media screen and (max-width: 550px) {
-  .modal__title {
-    margin: 25px 0 76px 22px;
-    font-size: 18px;
-    line-height: 22px;
-  }
 }
 
 .modal__form-submit {
@@ -91,15 +77,6 @@
   box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
   background-color: #2f71e5;
   color: white;
-}
-
-@media screen and (max-width: 550px) {
-  .modal__form-submit {
-    width: calc(100% - 44px);
-    margin: 46px 22px 25px;
-    font-size: 14px;
-    line-height: 17px;
-  }
 }
 
 .modal__form-submit:disabled {
@@ -131,8 +108,8 @@
   transition: opacity 0.4s linear;
 }
 
-.modal__error{
-  font-family: 'Inter', sans-serif;
+.modal__error {
+  font-family: "Inter", sans-serif;
   font-size: 12px;
   line-height: 15px;
   color: #ff0000;
@@ -141,11 +118,65 @@
   max-width: 358px;
 }
 
-@media screen and (max-width: 550px) {
-  .modal__close-button {
-    right: 0;
-    top: -41px;
-    height: 26px;
-    width: 26px;
+@media screen and (max-width: 1100px) {
+  .modal__container {
+    min-width: 430px;
   }
+}
+
+@media screen and (max-width: 540px) {
+
+  .modal{
+    align-items: flex-start;
+    bottom: -70px;
+  }
+
+  .modal__close-button_profile {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    align-self: flex-end;
+    margin-top: 16px;
+    margin-right: 32px;
+    top: -16px;
+    margin-top: -24px;
+  }
+
+  .modal__container {
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+    width: 100%;
+    border-radius: 25px;
+    justify-content: center;
+    
+  }
+
+  .modal__form-submit {
+    width: calc(100% - 32px);
+    margin: 46px 16px 25px;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .modal__title {
+    margin: 16px 0 17px 0;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .modal__profile{
+    box-sizing: border-box;
+    max-width: 320px;
+    width: 100%;
+    height: 90vh;
+    margin: 16px 0 0;
+  }
+
+  .modal__form-submit {
+    margin-bottom: 16px;
+  }
+
+  
+
 }

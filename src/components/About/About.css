@@ -57,3 +57,33 @@
         padding-top: 40px;
     }
 }
+
+@media only screen and (max-width: 540px) {
+    .about{
+        flex-direction: column;
+        padding: 0 16px;
+    }
+
+    .about__image{
+        padding: 32px 8px 0px;
+        max-width: 272px;
+        min-height: 272px;
+    }
+
+    .about__info{
+        max-width: 100%;
+        margin-left: 0;
+        padding-top: 24px;
+    }
+
+    .about__title{
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    .about__paragraph + .about__paragraph{
+        margin-bottom: 128px;
+    }
+
+
+}

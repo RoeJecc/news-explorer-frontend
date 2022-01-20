@@ -64,3 +64,27 @@
         padding: 24px 40px 18px;
     }
 }
+
+@media only screen and (max-width: 540px) {
+    .footer{
+        padding: 20px 16px 0;
+    }
+
+    .footer__container{
+        flex-direction: column-reverse;
+    }
+
+    .footer__links{
+        flex-direction: column;
+    }
+
+    .footer__link{
+        align-self: flex-start;
+        margin: 0;
+        margin-bottom: 30px;
+    }
+
+    .footer__socials{
+        align-items: flex-start;
+    }
+}
