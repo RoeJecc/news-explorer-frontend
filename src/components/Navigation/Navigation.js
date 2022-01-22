@@ -15,14 +15,16 @@ function Navigation({
   currentUser,
   isNavOpen,
   setIsNavOpen,
+  navLogo,
+  setNavLogo,
 }) {
   const [mobileWidth, setMobileWidth] = useState(false);
-  const [navLogo, setNavLogo] = useState();
+
   const [logoutIcon, setLogoutIcon] = useState();
   const history = useHistory();
 
   function checkWidth() {
-    const windowWidth = window.matchMedia("(max-width: 540px)");
+    const windowWidth = window.matchMedia("(max-width: 700px)");
     if (windowWidth.matches) {
       setMobileWidth(true);
     } else {
@@ -71,101 +73,84 @@ function Navigation({
     onLogout();
   }
 
-  function onNavLogoClick() {
-    setIsNavOpen(!isNavOpen);
-  }
+  
 
   function handleNavClick() {
     setIsNavOpen(false);
   }
 
   return !loggedIn ? (
-    <>
-      <img
-        className="navigation__logo"
-        alt="nav icon"
-        src={navLogo}
-        onClick={onNavLogoClick}
-      />
-      <nav
-        className={`navigation ${
-          mobileWidth && isNavOpen
-            ? "navigation__mobile_loggedin"
-            : "navigation__mobile_inactive"
-        }`}
-      >
-        <NavContainer mobileWidth={mobileWidth}>
-          <NavLink
-            to="/"
-            onClick={handleNavClick}
-            className={
-              "navigation__home " + (onSavedNews ? "navigation_type_black" : "")
-            }
-          >
-            Home
-          </NavLink>
-          <button
-            onClick={handleLoginButton}
-            className={
-              "navigation__signin " +
-              (onSavedNews ? "navigation__signin_black" : "")
-            }
-          >
-            Sign In
-          </button>
-        </NavContainer>
-      </nav>
-    </>
+    <nav
+      className={`navigation ${
+        mobileWidth && isNavOpen
+          ? "navigation__mobile_loggedin"
+          : "navigation__mobile_inactive"
+      }`}
+    >
+      <NavContainer mobileWidth={mobileWidth}>
+        <NavLink
+          to="/"
+          onClick={handleNavClick}
+          className={
+            "navigation__home " + (onSavedNews ? "navigation_type_black" : "")
+          }
+        >
+          Home
+        </NavLink>
+        <button
+          onClick={handleLoginButton}
+          className={
+            "navigation__signin " +
+            (onSavedNews ? "navigation__signin_black" : "")
+          }
+        >
+          Sign In
+        </button>
+      </NavContainer>
+    </nav>
   ) : (
-    <>
-      <img
-        className="navigation__logo"
-        alt="nav icon"
-        src={navLogo}
-        onClick={onNavLogoClick}
-      />
-      <nav
-        className={`navigation ${
-          mobileWidth && isNavOpen
-            ? "navigation__mobile_loggedin"
-            : "navigation__mobile_inactive"
-        }`}
-      >
-        <NavContainer mobileWidth={mobileWidth}>
-          <NavLink
-            to="/"
-            onClick={handleNavClick}
-            className={
-              "navigation__home " + (onSavedNews ? "navigation_type_black" : "")
-            }
-          >
-            Home
-          </NavLink>
-          <NavLink
-            to="/saved-news"
-            className={
-              "navigation__saved-articles " +
-              (onSavedNews ? "navigation__saved-articles_black" : "")
-            }
-          >
-            Saved articles
-          </NavLink>
-          <button
-            onClick={logOut}
-            className={
-              "navigation__signin " +
-              (onSavedNews ? "navigation__signin_black" : "")
-            }
-          >
-            {currentUser.email}
-            <img
-              className="navigation__logout_button"
-              src={logoutIcon}
-            />
-          </button>
-        </NavContainer>
-      </nav>
-    </>
+    <nav
+      className={`navigation ${
+        mobileWidth && isNavOpen
+          ? "navigation__mobile_loggedin"
+          : "navigation__mobile_inactive"
+      }`}
+    >
+      <NavContainer mobileWidth={mobileWidth}>
+        <NavLink
+          to="/"
+          onClick={handleNavClick}
+          className={
+            "navigation__home " + (onSavedNews ? "navigation_type_black" : "")
+          }
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="/saved-news"
+          className={
+            "navigation__saved-articles " +
+            (onSavedNews ? "navigation__saved-articles_black" : "")
+          }
+        >
+          Saved articles
+        </NavLink>
+        <button
+          onClick={logOut}
+          className={
+            "navigation__signin " +
+            (onSavedNews ? "navigation__signin_black" : "")
+          }
+        >
+          {currentUser.email}
+          <img
+            className="navigation__logout_button"
+            src={logoutIcon}
+            alt="Logout Icon"
+          />
+        </button>
+      </NavContainer>
+    </nav>
   );
 }
 

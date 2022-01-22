@@ -14,7 +14,7 @@ function PopupWithForm({
     <div className={`modal modal_type_${name} ${isOpen ? "modal_open" : ""}`}>
       <div className="modal__container">
       <button
-            className="modal__close-button modal__close-button_profile"
+            className="modal__close-button"
             type="reset"
             name="close"
             onClick={onClose}
@@ -22,7 +22,7 @@ function PopupWithForm({
         <form
           name={`${name}`}
           onSubmit={onSubmit}
-          className={`modal__profile modal__${name}`}
+          className={`modal__form modal__${name}`}
           noValidate
         >
           <h3 className="modal__title">{title}</h3>

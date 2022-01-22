@@ -42,6 +42,18 @@ function App() {
     }
   }, [location]);
 
+  useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === "Escape") {
+        closeAllPopups();
+      }
+    };
+
+    document.addEventListener("keydown", closeByEscape);
+
+    return () => document.removeEventListener("keydown", closeByEscape);
+  }, []);
+
   function handleSearchSubmit(keyword) {
     setNewsCardListShown(false);
     setIsLoading(true);
@@ -88,7 +100,7 @@ function App() {
 
   function handleLogin(email, password, username) {
     setLoggedIn(true);
-    setCurrentUser({ email, password});
+    setCurrentUser({ email, password });
     console.log(currentUser);
     setSignInOpen(false);
   }
@@ -109,6 +121,11 @@ function App() {
     setSuccessOpen(false);
   }
 
+  function handleCloseAllPopups(e) {
+    if (e.target !== e.currentTarget) return;
+    closeAllPopups();
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
@@ -123,6 +140,7 @@ function App() {
           currentUser={currentUser}
           isNavOpen={isNavOpen}
           setIsNavOpen={setIsNavOpen}
+          onClose={handleCloseAllPopups}
         />
         <Switch>
           <Route exact path="/">
@@ -165,7 +183,7 @@ function App() {
         </Switch>
         <SignIn
           isOpen={signInOpen}
-          onClose={closeAllPopups}
+          onClose={handleCloseAllPopups}
           onSignInClick={handleSignInClick}
           onLoginSubmit={handleLoginSubmit}
           currentUser={currentUser}
@@ -175,13 +193,13 @@ function App() {
         <SignUp
           setCurrentUser={setCurrentUser}
           isOpen={signUpOpen}
-          onClose={closeAllPopups}
+          onClose={handleCloseAllPopups}
           onSignInClick={handleSignInClick}
           onRegisterSubmit={handleRegisterSubmit}
         />
         <Success
           isOpen={successOpen}
-          onClose={closeAllPopups}
+          onClose={handleCloseAllPopups}
           onSignInClick={handleSignInClick}
           isRegistered={isRegistered}
         />

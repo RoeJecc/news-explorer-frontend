@@ -15,7 +15,8 @@ function Footer() {
             <a
               href="https://practicum.yandex.com"
               className="footer__link"
-              rel="noreferrer"
+              rel="noreferrer noopener"
+              target="_blank"
             >
               Practicum by Yandex
             </a>
@@ -23,15 +24,17 @@ function Footer() {
           <div className="footer__socials">
             <a
               href="https://github.com/roejecc/news-explorer-frontend"
-              rel="noreferrer"
+              rel="noreferrer noopener"
               className="footer__icon"
+              target="_blank"
             >
               <img src={github} alt="Github Icon" />
             </a>
             <a
               href="https://facebook.com"
-              rel="noreferrer"
+              rel="noreferrer noopener"
               className="footer__icon"
+              target="_blank"
             >
               <img src={facebook} alt="Facebook Icon" />
             </a>

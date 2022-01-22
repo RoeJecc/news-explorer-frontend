@@ -32,7 +32,7 @@
   grid-template-columns: repeat(3, 1fr);
   column-gap: 16px;
   row-gap: 16px;
-  margin: 64px 0;
+  margin:0;
   list-style-type: none;
   padding: 0;
 }
@@ -88,7 +88,7 @@
   }
 
   .news-card-list__grid {
-    margin: 32px 0;
+    margin: 0;
   }
 
   .news-card-list__title {

@@ -1,5 +1,6 @@
 import Navigation from "../Navigation/Navigation";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 function Header({
   onSavedNews,
@@ -11,30 +12,45 @@ function Header({
   isNavOpen,
   setIsNavOpen,
 }) {
+  const [navLogo, setNavLogo] = useState();
+
+  function onNavLogoClick() {
+    setIsNavOpen(!isNavOpen);
+  }
   return (
-    <header
-      className={`header ${
-        isNavOpen ? "header__mobile-open" : "header__mobile-closed"
-      }`}
-    >
-      <NavLink
-        to="/"
-        className={`header__title ${onSavedNews && "header__title_black"} ${
-          isNavOpen && "header__title_mobile-open"
+    <header className="header">
+      <div
+        className={`header__container ${
+          isNavOpen ? "header__mobile-open" : "header__mobile-closed"
         }`}
       >
-        NewsExplorer
-      </NavLink>
-      <Navigation
-        onSavedNews={onSavedNews}
-        setNewsCardListShown={setNewsCardListShown}
-        loggedIn={loggedIn}
-        setLoggedIn={setLoggedIn}
-        onSignInClick={onSignInClick}
-        currentUser={currentUser}
-        isNavOpen={isNavOpen}
-        setIsNavOpen={setIsNavOpen}
-      />
+        <NavLink
+          to="/"
+          className={`header__title ${onSavedNews && "header__title_black"} ${
+            isNavOpen && "header__title_mobile-open"
+          }`}
+        >
+          NewsExplorer
+        </NavLink>
+        <img
+          className="header__logo"
+          alt="header icon"
+          src={navLogo}
+          onClick={onNavLogoClick}
+        />
+        <Navigation
+          onSavedNews={onSavedNews}
+          setNewsCardListShown={setNewsCardListShown}
+          loggedIn={loggedIn}
+          setLoggedIn={setLoggedIn}
+          onSignInClick={onSignInClick}
+          currentUser={currentUser}
+          isNavOpen={isNavOpen}
+          setIsNavOpen={setIsNavOpen}
+          navLogo={navLogo}
+          setNavLogo={setNavLogo}
+        />
+      </div>
     </header>
   );
 }

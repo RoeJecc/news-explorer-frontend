@@ -58,7 +58,7 @@ function NewsCard({ data, onSavedNews, loggedIn, onSignInClick }) {
 
       {isSaved && <div className="news-card__tooltip">Remove from saved</div>}
       {!onSavedNews ? (
-        <img className="news-card__image" src={data.urlToImage} />
+        <img className="news-card__image" alt="Newscard Image" src={data.urlToImage} />
       ) : (
         <img className="news-card__image" src={card} />
       )}

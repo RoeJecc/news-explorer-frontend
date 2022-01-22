@@ -1,4 +1,4 @@
-.modal__container_success {
+.modal__success-container {
   background-color: white;
   position: relative;
   color: black;
@@ -13,7 +13,7 @@
   height: 182px;
 }
 
-.modal__text_success {
+.modal__success-text {
   font-family: "Inter", sans-serif;
   font-size: 18px;
   line-height: 21.78px;

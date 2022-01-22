@@ -50,7 +50,7 @@ function SignIn({
           required
         ></input>
         <p className="modal__error">{errors.email || ""}</p>
-        <label className="signin__label signin__label_password">Password</label>
+        <label className="signin__label signin__label-padded">Password</label>
         <input
           type="password"
           className="signin__input"

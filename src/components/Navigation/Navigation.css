@@ -70,9 +70,7 @@
   margin-left: 15px;
 }
 
-.navigation__logo {
-  display: none;
-}
+
 
 @media only screen and (max-width: 1100px) {
   .navigation__signin {
@@ -103,7 +101,7 @@
   }
 }
 
-@media only screen and (max-width: 540px) {
+@media only screen and (max-width: 700px) {
   .navigation {
     position: absolute;
     width: 100%;
@@ -125,7 +123,7 @@
     flex-direction: column;
   }
 
-  .navigation__logo {
+  .header__logo {
     display: block;
     transition: opacity 0.4s ease;
     height: 24px;
@@ -133,7 +131,7 @@
     align-self: center;
   }
 
-  .navigation__logo:hover {
+  .header__logo:hover {
     opacity: 0.7;
     cursor: pointer;
   }

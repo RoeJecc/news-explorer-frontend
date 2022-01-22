@@ -9,15 +9,15 @@ function Success({ onClose, isOpen, onSignInClick }) {
       onClick={handleSuccessClick}
       className={`modal modal_type_success ${isOpen ? "modal_open" : ""}`}
     >
-      <div className="modal__container_success">
+      <div className="modal__success-container">
         <button
-          className="modal__close-button modal__close-button_profile"
+          className="modal__close-button"
           type="reset"
           name="close"
           onClick={onClose}
         />
         <h2 className="modal__title">Registration successfully complete!</h2>
-        <p className="modal__text_success">
+        <p className="modal__success-text">
           <span to="/" className="signup__signin-link" onClick={onSignInClick}>
             Sign in
           </span>

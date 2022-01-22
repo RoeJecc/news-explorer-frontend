@@ -40,7 +40,7 @@ function SignUp({
           required
         ></input>
         <p className="modal__error">{errors.email || ""}</p>
-        <label className="signin__label signin__label_password">Password</label>
+        <label className="signup__label signup__label-padded">Password</label>
         <input
           type="password"
           className="signup__input"
@@ -55,7 +55,7 @@ function SignUp({
           required
         ></input>
         <p className="modal__error">{errors.password || ""}</p>
-        <label className="signin__label signin__label_username">Username</label>
+        <label className="signup__label signup__label-padded">Username</label>
         <input
           type="name"
           className="signup__input"

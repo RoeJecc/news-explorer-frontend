@@ -13,12 +13,8 @@
     padding: 10px 0 0 0;
   }
   
-  .signup__label_password {
+  .signup__label-padded {
     padding-top: 31px;
-  }
-
-  .signin__label_username{
-      padding-top: 31px;
   }
   
   .signup__input {
