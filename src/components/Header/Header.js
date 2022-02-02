@@ -25,6 +25,7 @@ function Header({
         }`}
       >
         <NavLink
+          exact
           to="/"
           className={`header__title ${onSavedNews && "header__title_black"} ${
             isNavOpen && "header__title_mobile-open"

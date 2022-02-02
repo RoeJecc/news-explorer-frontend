@@ -13,7 +13,9 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { Switch, Route, useLocation, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import newsAPI from "../../utils/newsAPI";
+import mainAPI from "../../utils/mainAPI";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import * as auth from "../../utils/auth";
 
 function App() {
   const history = useHistory();
@@ -32,6 +34,38 @@ function App() {
   const [successOpen, setSuccessOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [savedArticles, setSavedArticles] = useState([]);
+  const [savedCardsArray, setSavedCardsArray] = useState([]);
+
+  useEffect(() => {
+    if (token) {
+      auth
+        .checkToken(token)
+        .then((res) => {
+          setLoggedIn(true);
+          history.push("/");
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [token, history]);
+
+  useEffect(() => {
+    mainAPI
+      .getCurrentUser(token)
+      .then((res) => {
+        setCurrentUser(res.user);
+      })
+      .catch((err) => console.log(err));
+  }, [token]);
+
+  useEffect(() => {
+    mainAPI.getArticles(token).then((res) => {
+      setSavedArticles(res.articles);
+    })
+    .catch((err) => console.log(err));
+  }, [token]);
 
   useEffect(() => {
     const savedNewsPath = ["saved-news"];
@@ -88,30 +122,55 @@ function App() {
     setSignInOpen(false);
   }
 
-  function handleRegister(email, password, username) {
+  function handleRegister() {
+    setHasError(false);
     setSignUpOpen(false);
     setSuccessOpen(true);
   }
 
-  function handleRegisterSubmit(email, password, username) {
-    setIsRegistered(true);
-    handleRegister();
+  function handleRegisterSubmit(email, password, name) {
+    auth
+      .register(email, password, name)
+      .then((res) => {
+        if (res) {
+          setIsRegistered(true);
+          handleRegister();
+        } else {
+          setIsRegistered(false);
+          setHasError(true);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setHasError(true);
+      });
   }
 
-  function handleLogin(email, password, username) {
+  function handleLogin() {
+    setHasError(false);
     setLoggedIn(true);
-    setCurrentUser({ email, password });
-    console.log(currentUser);
     setSignInOpen(false);
   }
 
-  function handleLoginSubmit(email, password, username) {
-    handleLogin(email, password, username);
-    history.push("/");
+  function handleLoginSubmit(email, password) {
+    auth
+      .authorize(email, password)
+      .then((data) => {
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+          setToken(data.token);
+          handleLogin();
+          history.push("/");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function handleLogout() {
     setLoggedIn(false);
+    localStorage.removeItem("token");
     history.push("/");
   }
 
@@ -124,6 +183,48 @@ function App() {
   function handleCloseAllPopups(e) {
     if (e.target !== e.currentTarget) return;
     closeAllPopups();
+  }
+
+  function handleSaveArticle(data) {
+    if (!savedArticles.find((obj) => obj.title === data.title)) {
+      mainAPI
+        .saveArticle(data, searchKeyword, token)
+        .then((data) => {
+          setSavedArticles((savedArticles) => [
+            ...savedArticles,
+            data.article,
+          ]);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      console.log("Article already saved.")
+    }
+  }
+
+  function handleDeleteArticle(data) {
+    let articleId;
+
+    if (!onSavedNews) {
+      if (savedArticles.find((obj) => obj.link === data.url)) {
+        const article = savedArticles.find((obj) => {
+          return obj.link === data.url;
+        });
+        articleId = article._id;
+      } else {
+        console.log('that card doesnt exist!');
+      }
+    } else {
+      articleId = data._id;
+    }
+
+    mainAPI
+      .deleteArticle(articleId, token)
+      .then((data) => {
+        setSavedArticles(
+          savedArticles.filter((obj) => obj._id !== data.article._id)
+        );
+      })
+      .catch((err) => console.log(err));
   }
 
   return (
@@ -158,6 +259,10 @@ function App() {
                 setShownCards={setShownCards}
                 onSignInClick={handleSignInClick}
                 loggedIn={loggedIn}
+                onSaveArticleClick={handleSaveArticle}
+                onDeleteArticleClick={handleDeleteArticle}
+                savedArticles={savedArticles}
+                setSavedCardsArray={setSavedCardsArray}
               />
             )}
             {isLoading && <Preloader />}
@@ -166,11 +271,8 @@ function App() {
           </Route>
           <ProtectedRoute path="/saved-news" loggedIn={loggedIn}>
             <SavedNewsHeader
-              onSavedNews={onSavedNews}
-              setNewsCardListShown={setNewsCardListShown}
-              setSearchKeyword={setSearchKeyword}
               currentUser={currentUser}
-              loggedIn={loggedIn}
+              savedArticles={savedArticles}
             />
             <NewsCardList
               onSavedNews={onSavedNews}
@@ -178,6 +280,11 @@ function App() {
               setShownCards={setShownCards}
               loggedIn={loggedIn}
               currentUser={currentUser}
+              token={token}
+              savedCardsArray={savedCardsArray}
+              setSavedCardsArray={setSavedCardsArray}
+              onDeleteArticleClick={handleDeleteArticle}
+              savedArticles={savedArticles}
             />
           </ProtectedRoute>
         </Switch>

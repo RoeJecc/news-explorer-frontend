@@ -25,6 +25,7 @@
   width: 100%;
   text-align: left;
   margin: 0;
+  padding-bottom: 64px;
 }
 
 .news-card-list__grid {
@@ -50,6 +51,7 @@
   line-height: 24px;
   text-align: center;
   transition: background-color 0.4s ease;
+  margin-top: 64px;
 }
 
 .news-card-list__show-more:hover {
@@ -79,6 +81,11 @@
   .news-card-list__title {
     font-size: 30px;
     line-height: 34px;
+    padding-bottom: 32px;
+  }
+
+  .news-card-list__show-more {
+    margin-top: 32px;
   }
 }
 
@@ -106,5 +113,13 @@
 @media screen and (max-width: 520px) {
   .news-card-list {
     padding: 24px 16px 24px 16px;
+  }
+
+  .news-card-list__title{
+    padding-bottom: 58px;
+  }
+
+  .news-card-list__show-more {
+    margin-top: 32px;
   }
 }

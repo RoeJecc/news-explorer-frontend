@@ -97,10 +97,6 @@
   display: flex;
 }
 
-.news-card__button:hover + .news-card__tooltip_keyword {
-  display: flex;
-}
-
 .news-card__button_saved {
   background-image: url(../../images/savebuttonblue.png);
 }
@@ -111,6 +107,10 @@
 
 .news-card__button_saved:hover {
   background-image: url(../../images/trash.png);
+}
+
+.news-card__button_saved-news:hover + .news-card__tooltip {
+  display: flex;
 }
 
 .news-card__button_saved-news {
@@ -154,7 +154,9 @@
 }
 
 .news-card__tooltip_keyword {
-  right: 300px;
+  left: 30px;
+  display: flex;
+  width:fit-content;
 }
 
 .news-card-list__card {

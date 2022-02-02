@@ -7,10 +7,14 @@ function NewsCardList({
   cards,
   shownCards,
   setShownCards,
-  setNewsCardListShown,
   loggedIn,
-  setLoggedIn,
   onSignInClick,
+  savedCardsArray,
+  setSavedCardsArray,
+  savedArticles,
+  onDeleteArticleClick,
+  onSaveArticleClick,
+  setLoggedIn
 }) {
   const [buttonShown, setButtonShown] = useState(false);
   const [next, setNext] = useState(3);
@@ -29,6 +33,13 @@ function NewsCardList({
     }
   }, [shownCards?.length, cards?.length]);
 
+  useEffect(() => {
+    if (onSavedNews) {
+      console.log(savedArticles);
+      setSavedCardsArray(savedArticles);
+    }
+  }, [onSavedNews, savedArticles, setSavedCardsArray])
+
   function handleShowMore() {
     setShownCards(cards.slice(0, next + CARDS_NUMBER));
     setNext(next + CARDS_NUMBER);
@@ -38,62 +49,17 @@ function NewsCardList({
     <section className="news-card-list news-card-list__saved-articles">
       <div className="news-card-list__container">
         <ul className="news-card-list__grid">
-          <li className="news-card-list__card">
+          {savedCardsArray?.map((newscard) => (
+            <li className="news-card-list__card" key={newscard._id}>
             <NewsCard
               loggedIn={loggedIn}
-              setLoggedIn={setLoggedIn}
-              data={{
-                title: "title",
-                source: "source",
-                description: "description",
-                date: "1/01/91",
-              }}
+              data={newscard}
               onSavedNews={onSavedNews}
-              onSignInClick={onSignInClick}
+              savedArticles={savedArticles}
+              onDeleteArticleClick={onDeleteArticleClick}
             />
           </li>
-          <li className="news-card-list__card">
-            <NewsCard
-              loggedIn={loggedIn}
-              setLoggedIn={setLoggedIn}
-              data={{
-                title: "title",
-                source: "source",
-                description: "description",
-                date: "1/01/91",
-              }}
-              onSavedNews={onSavedNews}
-              onSignInClick={onSignInClick}
-            />
-          </li>
-          <li className="news-card-list__card">
-            <NewsCard
-              loggedIn={loggedIn}
-              setLoggedIn={setLoggedIn}
-              data={{
-                title: "title",
-                source: "source",
-                description: "description",
-                date: "1/01/91",
-              }}
-              onSavedNews={onSavedNews}
-              onSignInClick={onSignInClick}
-            />
-          </li>
-          <li className="news-card-list__card">
-            <NewsCard
-              loggedIn={loggedIn}
-              setLoggedIn={setLoggedIn}
-              data={{
-                title: "title",
-                source: "source",
-                description: "description",
-                date: "1/01/91",
-              }}
-              onSavedNews={onSavedNews}
-              onSignInClick={onSignInClick}
-            />
-          </li>
+          ))}
         </ul>
       </div>
     </section>
@@ -110,6 +76,9 @@ function NewsCardList({
                 data={newscard}
                 onSavedNews={onSavedNews}
                 onSignInClick={onSignInClick}
+                savedArticles={savedArticles}
+                onSaveArticleClick={onSaveArticleClick}
+                onDeleteArticleClick={onDeleteArticleClick}
               />
             </li>
           ))}

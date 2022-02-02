@@ -73,8 +73,6 @@ function Navigation({
     onLogout();
   }
 
-  
-
   function handleNavClick() {
     setIsNavOpen(false);
   }
@@ -89,6 +87,7 @@ function Navigation({
     >
       <NavContainer mobileWidth={mobileWidth}>
         <NavLink
+          exact
           to="/"
           onClick={handleNavClick}
           className={
@@ -118,6 +117,7 @@ function Navigation({
     >
       <NavContainer mobileWidth={mobileWidth}>
         <NavLink
+          exact
           to="/"
           onClick={handleNavClick}
           className={
@@ -142,7 +142,7 @@ function Navigation({
             (onSavedNews ? "navigation__signin_black" : "")
           }
         >
-          {currentUser.email}
+          {currentUser?.name}
           <img
             className="navigation__logout_button"
             src={logoutIcon}
