@@ -112,12 +112,14 @@ function App() {
   }
 
   function handleSignInClick() {
+    setHasError(false);
     setSignInOpen(true);
     setSignUpOpen(false);
     setSuccessOpen(false);
   }
 
   function handleSignUpClick() {
+    setHasError(false);
     setSignUpOpen(true);
     setSignInOpen(false);
   }
@@ -164,7 +166,8 @@ function App() {
         }
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err)
+        setHasError(true);
       });
   }
 
@@ -296,6 +299,7 @@ function App() {
           currentUser={currentUser}
           setCurrentUser={setCurrentUser}
           onSignUpClick={handleSignUpClick}
+          hasError={hasError}
         />
         <SignUp
           setCurrentUser={setCurrentUser}
@@ -303,6 +307,7 @@ function App() {
           onClose={handleCloseAllPopups}
           onSignInClick={handleSignInClick}
           onRegisterSubmit={handleRegisterSubmit}
+          hasError={hasError}
         />
         <Success
           isOpen={successOpen}

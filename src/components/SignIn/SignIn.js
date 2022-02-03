@@ -65,6 +65,7 @@ function SignIn({
           required
         ></input>
         <p className="modal__error">{errors.password || ""}</p>
+        {hasError && (<p className="modal__error">Incorrect email or password</p>)}
         <button
           className={`modal__form-submit ${
             isValid ? "modal__form-submit_active" : ""
