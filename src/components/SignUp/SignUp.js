@@ -68,6 +68,7 @@ function SignUp({
           required
         ></input>
         <p className="modal__error">{errors.name || ""}</p>
+        {hasError && (<p className="modal__error">This email already in use.</p>)}
         <button
           className={`modal__form-submit ${
             isValid ? "modal__form-submit_active" : ""
