@@ -1,1 +1,1 @@
-jrecc-news.students.nomoreparties.sbs
+https://jrecc-news.students.nomoreparties.sbs/
