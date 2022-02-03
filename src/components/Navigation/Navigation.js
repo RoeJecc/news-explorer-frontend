@@ -17,6 +17,7 @@ function Navigation({
   setIsNavOpen,
   navLogo,
   setNavLogo,
+  onLogout
 }) {
   const [mobileWidth, setMobileWidth] = useState(false);
 
@@ -63,10 +64,6 @@ function Navigation({
     handleNavClick();
   }
 
-  function onLogout() {
-    setLoggedIn(false);
-    history.push("/");
-  }
 
   function logOut() {
     handleNavClick();

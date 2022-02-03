@@ -1,6 +1,6 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import { useState } from "react";
-import FormValidator from "../../utils/formValidator";
+import useFormValidator from "../../utils/useFormValidator";
 
 function SignIn({
   isOpen,
@@ -12,7 +12,7 @@ function SignIn({
   currentUser,
   onSignUpClick
 }) {
-  const { values, handleChange, errors, isValid } = FormValidator();
+  const { values, handleChange, errors, isValid } = useFormValidator();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");

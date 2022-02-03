@@ -11,6 +11,7 @@ function Header({
   currentUser,
   isNavOpen,
   setIsNavOpen,
+  onLogout
 }) {
   const [navLogo, setNavLogo] = useState();
 
@@ -50,6 +51,7 @@ function Header({
           setIsNavOpen={setIsNavOpen}
           navLogo={navLogo}
           setNavLogo={setNavLogo}
+          onLogout={onLogout}
         />
       </div>
     </header>

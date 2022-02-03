@@ -237,7 +237,7 @@ function App() {
           loggedIn={loggedIn}
           setLoggedIn={setLoggedIn}
           onSignInClick={handleSignInClick}
-          onLotout={handleLogout}
+          onLogout={handleLogout}
           currentUser={currentUser}
           isNavOpen={isNavOpen}
           setIsNavOpen={setIsNavOpen}
