@@ -119,6 +119,10 @@
   max-width: 358px;
 }
 
+.modal__error_type_form{
+  top: -10px;
+}
+
 @media screen and (max-width: 1100px) {
   .modal__container {
     min-width: 430px;
