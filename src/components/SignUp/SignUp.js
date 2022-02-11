@@ -1,5 +1,5 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-import FormValidator from "../../utils/formValidator";
+import useFormValidator from "../../utils/useFormValidator";
 
 
 function SignUp({
@@ -11,7 +11,7 @@ function SignUp({
   setCurrentUser,
   currentUser,
 }) {
-  const { values, handleChange, errors, isValid } = FormValidator();
+  const { values, handleChange, errors, isValid } = useFormValidator();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -68,6 +68,7 @@ function SignUp({
           required
         ></input>
         <p className="modal__error">{errors.name || ""}</p>
+        {hasError && (<p className="modal__error">This email already in use.</p>)}
         <button
           className={`modal__form-submit ${
             isValid ? "modal__form-submit_active" : ""

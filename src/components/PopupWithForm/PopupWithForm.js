@@ -1,4 +1,4 @@
-import FormValidator from "../../utils/formValidator";
+import useFormValidator from "../../utils/useFormValidator";
 import { useEffect } from "react";
 
 function PopupWithForm({

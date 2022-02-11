@@ -50,9 +50,9 @@ function NewsCard({
       "December",
     ];
 
-    let articleDate = onSavedNews ? data.date : data.publishedAt;
-    let newDate = new Date(articleDate?.slice(0, 10));
-    let convertedDate = `${
+    const articleDate = onSavedNews ? data.date : data.publishedAt;
+    const newDate = new Date(articleDate?.slice(0, 10));
+    const convertedDate = `${
       months[newDate.getMonth()]
     } ${newDate.getDate()},  ${newDate.getFullYear()}`;
 
