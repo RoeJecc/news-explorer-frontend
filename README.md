@@ -2,7 +2,7 @@ NEWS EXPLORER
 
 Inspiration:
 
-To create a single page application for searching the NewsAPI.org API with the ability to save articles to a user's Saved Articles list for viewing later.
+To create a single page application for searching the NewsAPI.org API. Complete with user authorization and authentication this app has the ability to save articles to a user's Saved Articles list for viewing later.
 
 Features:
 
